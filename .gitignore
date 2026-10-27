@@ -1,1 +1,5 @@
-.\venv
+# add all files which is no need to add github
+.streamlit
+.venv
+.dockerignore
+

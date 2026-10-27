@@ -33,6 +33,27 @@ Streamlit prints a local URL in the terminal when the app starts. Open that URL
 in a browser. Keep the app running from the project directory: `app.py` loads
 `df.pkl` and `pipe.pkl` using paths relative to that directory.
 
+The app is configured to listen on all network interfaces. To open it from
+another device on the same Wi-Fi or LAN, find the host computer's IPv4 address
+with `ipconfig`, then visit `http://<host-ipv4-address>:8501` on that device.
+Allow inbound TCP port 8501 through the host's firewall on a trusted private
+network if prompted. Do not expose this app directly to the public internet.
+
+## Run with Docker
+
+Build and run the image from the project directory:
+
+```powershell
+docker build -t laptop-price-predictor .
+docker run --rm -p 8501:8501 laptop-price-predictor
+```
+
+Open `http://localhost:8501` in your browser. The Docker image includes only the
+app and its model files; the notebook, dataset, and local virtual environment are
+excluded from the build context. It installs the pinned runtime dependencies
+from `requirements-docker.txt`; `requirements.txt` remains the full project
+environment.
+
 ## Using the predictor
 
 Choose the laptop's configuration with the app's input controls and select
