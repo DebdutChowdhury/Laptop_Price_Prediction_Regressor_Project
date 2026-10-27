@@ -2,12 +2,14 @@ import streamlit as st
 import pandas as pd
 import pickle
 import numpy as np
+from pathlib import Path
 
 # import models
-with open('df.pkl', 'rb') as f:
+model_dir = Path(__file__).resolve().parent / 'model'
+with (model_dir / 'df.pkl').open('rb') as f:
     df = pickle.load(f)
 
-with open('pipe.pkl', 'rb') as f:
+with (model_dir / 'pipe.pkl').open('rb') as f:
     pipe = pickle.load(f)
 
 

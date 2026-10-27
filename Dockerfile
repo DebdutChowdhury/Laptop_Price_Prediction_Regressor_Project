@@ -20,7 +20,8 @@ COPY requirements-docker.txt ./
 RUN python -m pip install --no-cache-dir -r requirements-docker.txt \
     && python -m pip install --no-cache-dir --no-deps xgboost==3.2.0
 
-COPY --chown=app:app app.py df.pkl pipe.pkl ./
+COPY --chown=app:app app.py ./
+COPY --chown=app:app model/ ./model/
 
 USER app
 
